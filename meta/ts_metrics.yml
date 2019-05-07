@@ -1,0 +1,88 @@
+- name: container_cpu_usage_rate
+  query: sum(rate(container_cpu_usage_seconds_total{name=~"mn.*"}[10s])) by (name)
+- name: container_cpu_usage_rate_normalized
+  query: sum(rate(container_cpu_usage_seconds_total{name=~"mn.*"}[10s])) by (name)
+    / sum(container_spec_cpu_quota{name=~"mn.*"}/container_spec_cpu_period{name=~"mn.*"})
+    by (name)
+- name: container_cpu_system_seconds_total
+  query: sum(container_cpu_system_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_user_seconds_total
+  query: sum(container_cpu_user_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_usage_seconds_total
+  query: sum(container_cpu_usage_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_periods_total
+  query: sum(container_cpu_cfs_periods_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_throttled_periods_total
+  query: sum(container_cpu_cfs_throttled_periods_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_throttled_seconds_total
+  query: sum(container_cpu_cfs_throttled_seconds_total{name=~"mn.*"}) by (name)
+- name: container_memory_usage_bytes
+  query: sum(container_memory_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_max_usage_bytes
+  query: sum(container_memory_max_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_swap
+  query: sum(container_memory_swap{name=~"mn.*"}) by (name)
+- name: container_memory_failures_total
+  query: sum(container_memory_failures_total{name=~"mn.*"}) by (name)
+- name: container_memory_cache
+  query: sum(container_memory_cache{name=~"mn.*"}) by (name)
+- name: container_memory_rss
+  query: sum(container_memory_rss{name=~"mn.*"}) by (name)
+- name: container_fs_io_current
+  query: sum(container_fs_io_current{name=~"mn.*"}) by (name)
+- name: container_fs_io_time_seconds_total
+  query: sum(container_fs_io_time_seconds_total{name=~"mn.*"}) by (name)
+- name: container_fs_usage_bytes
+  query: sum(container_fs_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_network_receive_bytes_total
+  query: sum(container_network_receive_bytes_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_bytes_total
+  query: sum(container_network_transmit_bytes_total{name=~"mn.*"}) by (name)
+- name: container_network_receive_errors_total
+  query: sum(container_network_receive_errors_total{name=~"mn.*"}) by (name)
+- name: container_network_receive_packets_dropped_total
+  query: sum(container_network_receive_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_errors_total
+  query: sum(container_network_transmit_errors_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_packets_dropped_total
+  query: sum(container_network_transmit_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_memory_working_set_bytes
+  query: sum(container_memory_working_set_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_usage_bytes
+  query: sum(container_memory_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_network_receive_packets_dropped_total
+  query: sum(container_network_receive_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_start_time_abs_seconds
+  query: sum(container_start_time_seconds{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_period
+  query: sum(container_spec_cpu_period{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_quota
+  query: sum(container_spec_cpu_quota{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_shares
+  query: sum(container_spec_cpu_shares{name=~"mn.*"}) by (name)
+- name: container_spec_memory_limit_bytes
+  query: sum(container_spec_memory_limit_bytes{name=~"mn.*"}) by (name)
+- name: container_spec_memory_reservation_limit_bytes
+  query: sum(container_spec_memory_reservation_limit_bytes{name=~"mn.*"}) by (name)
+- name: container_spec_memory_swap_limit_bytes
+  query: sum(container_spec_memory_swap_limit_bytes{name=~"mn.*"}) by (name)
+- name: hwnode_cpu_usage
+  query: sum(rate(node_cpu_seconds_total[10s])) by (cpu, mode)
+- name: hwnode_load1
+  query: node_load1
+- name: hwnode_load5
+  query: node_load5
+- name: hwnode_load15
+  query: node_load15
+- name: hwnode_memory_MemAvailable_bytes
+  query: node_memory_MemAvailable_bytes
+- name: hwnode_memory_MemUsed_bytes
+  query: node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+- name: hwnode_hwmon_temp_celsius
+  query: node_hwmon_temp_celsius
+- name: hwnode_context_switches_total
+  query: node_context_switches_total
+- name: hwnode_procs_running
+  query: node_procs_running
+- name: hwnode_vmstat_pgfault
+  query: rate(node_vmstat_pgfault[10s])
