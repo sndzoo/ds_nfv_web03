@@ -22,7 +22,8 @@ service_experiments:
   - name: "zoo_web03"
     description: "NFV Benchmark Zoo Experiment"
     repetitions: 20
-    time_limit: 60 # seconds per experiment
+    time_limit: 120 # seconds per experiment
+    time_warmup: 20
     # NSD to be used (vendor.name.version reference)
     target:
       vendor: "de.upb"
@@ -50,8 +51,8 @@ service_experiments:
         io_bw: null
       - function: "mp.input"
         cmd_start: [
-          "ab -c 1 -t 60 -n 9999999 -e /tngbench_share/ab_dist.csv -s 60 -k -i -X 20.0.0.254:3128 http://40.0.0.254:80/",  # small: -i == HEAD request
-          "ab -c 1 -t 60 -n 9999999 -e /tngbench_share/ab_dist.csv -s 60 -k -X 20.0.0.254:3128 http://40.0.0.254:80/bunny.mp4"  # large: 318388586 byte bunny video
+          "ab -c 1 -t 60 -n 99999999 -e /tngbench_share/ab_dist.csv -s 60 -k -i -X 20.0.0.254:3128 http://40.0.0.254:80/",  # small: -i == HEAD request
+          "ab -c 1 -t 60 -n 99999999 -e /tngbench_share/ab_dist.csv -s 60 -k -X 20.0.0.254:3128 http://40.0.0.254:80/bunny.mp4"  # large: 318388586 byte bunny video
         ]
         cmd_stop: "./stop.sh"
         cpu_bw: null  # float: fraction of CPU time in vim-emu
